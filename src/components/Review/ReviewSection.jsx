@@ -4,7 +4,7 @@ import Image from "next/image";
 const ReviewSection = () => {
   return (
     <>
-      <div className="p-20">
+      <div className="md:px-20 md:py-20 px-4 py-16">
         <div className="text-center text-[#18191F]">
           <p className="lg:text-[3rem] md:text-[2rem] sm:text-[1.5rem] text-[1.25rem] font-extrabold">
             Our Clients Speak
