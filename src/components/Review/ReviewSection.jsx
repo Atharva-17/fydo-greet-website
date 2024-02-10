@@ -1,5 +1,12 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/free-mode";
 
 const ReviewSection = () => {
   return (
@@ -13,7 +20,34 @@ const ReviewSection = () => {
             We have been working with clients around the world
           </p>
         </div>
-        <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10 mt-10">
+
+        <Swiper
+        spaceBetween={40}
+        slidesPerView={1}
+        breakpoints={{
+          425: {
+            slidesPerView: 1,
+            spaceBetween: 15,
+          },
+          769: {
+            slidesPerView: 2,
+            spaceBetween: 15,
+          },
+          1025: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+        }}
+        freeMode={true}
+        pagination={{
+          el: ".swiper-pagination",
+          clickable: true,
+        }}
+        modules={[FreeMode, Pagination]}
+        className="max-w-[90%] lg:max-w-[95%] mt-10"
+      >
+        <SwiperSlide>
+          {" "}
           <div className="flex flex-col items-center">
             <div className="px-8 py-12 shadow-md rounded-md text-center">
               <p className="text-[1.5rem] font-semibold">
@@ -40,7 +74,9 @@ const ReviewSection = () => {
               <p className="text-[0.875rem] text-[#474A57]">FunHub Odisha</p>
             </div>
           </div>
-
+        </SwiperSlide>
+        <SwiperSlide>
+          {" "}
           <div className="flex flex-col items-center">
             <div className="px-8 py-12 shadow-md rounded-md text-center">
               <p className="text-[1.5rem] font-semibold">Intuitive Design</p>
@@ -67,7 +103,9 @@ const ReviewSection = () => {
               </p>
             </div>
           </div>
-
+        </SwiperSlide>
+        <SwiperSlide>
+          {" "}
           <div className="flex flex-col items-center">
             <div className="px-8 py-12 shadow-md rounded-md text-center">
               <p className="text-[1.5rem] font-semibold">Mindblowing Service</p>
@@ -93,8 +131,43 @@ const ReviewSection = () => {
               </p>
             </div>
           </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          {" "}
+          <div className="flex flex-col items-center">
+            <div className="px-8 py-12 shadow-md rounded-md text-center">
+              <p className="text-[1.5rem] font-semibold">
+                Efficient Collaborating
+              </p>
+              <p className="mt-4">
+                Fydo's event ticket booking platform had streamlined our
+                ticketing process and enhanced attendee experience. The best
+                part was the dedicated relationship manager, that guy Saroj, he
+                was very helpful and helped me streamline the whole event with
+                ease.
+              </p>
+            </div>
+            <div className="mt-10 flex flex-col items-center">
+              <Image
+                src="/assets/review1.svg"
+                width={56}
+                height={56}
+                alt="icon"
+              />
+              <p className="mt-2 text-[1.125rem] text-[#18191F] font-bold">
+                Farzaan
+              </p>
+              <p className="text-[0.875rem] text-[#474A57]">FunHub Odisha</p>
+            </div>
+          </div>
+        </SwiperSlide>
+        <div className="flex justify-center items-center mt-14">
+          <div className="swiper-pagination"></div>
         </div>
+      </Swiper>
+
       </div>
+
     </>
   );
 };

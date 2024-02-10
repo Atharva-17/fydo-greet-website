@@ -1,5 +1,13 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
 
 const FeatureSection = () => {
   const featureData = [
@@ -67,7 +75,7 @@ const FeatureSection = () => {
           </p>
         </div>
 
-        <div className="grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 mx-auto gap-6 mt-[3.75rem]">
+        <div className="xl:grid-cols-4 md:grid-cols-2 grid-cols-1 sm:grid hidden mx-auto gap-6 mt-[3.75rem]">
           {featureData.map((item, index) => {
             return (
               <div
@@ -84,6 +92,53 @@ const FeatureSection = () => {
               </div>
             );
           })}
+        </div>
+      
+      <div className="sm:hidden ">
+        <Swiper
+          spaceBetween={40}
+          slidesPerView={1}
+          breakpoints={{
+            425: {
+              slidesPerView: 1,
+              spaceBetween: 15,
+            },
+          }}
+          pagination={{
+            el: ".swiper-pagination-feature",
+            clickable: true,
+          }}
+          modules={[Pagination, Navigation]}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+            clickable: true,
+          }}
+          className="mt-10"
+        >
+          {" "}
+          {featureData.map((item, index) => {
+            return (
+              <SwiperSlide key={item.id}>
+                <div className="flex flex-col items-center text-center px-[23.605px] py-[31.473px] rounded-2xl shadow-sm border-[0.787px] border-[#E5F4F2]">
+                  <Image
+                    src={`${item.icon}`}
+                    width={64}
+                    height={64}
+                    alt="icon"
+                  />
+                  <p className="mt-6 text-[#2D2D2D] font-semibold md:text-[1.5rem] text-[1.25rem]">
+                    {item.name}
+                  </p>
+                  <p className="mt-4 text-[#475467] md:text-[1rem] text-[0.875rem]">
+                    {item.desc}
+                  </p>
+                </div>
+              </SwiperSlide>
+            );
+          })}
+          <div className="swiper-pagination-feature"></div>
+        </Swiper>
         </div>
       </div>
     </>
